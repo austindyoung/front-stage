@@ -1,6 +1,5 @@
-# Manifold
 
-## Minimum Viable Product
+## front-stage
 Manifold is a clone of Asana that will enable users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
