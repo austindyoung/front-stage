@@ -215,6 +215,8 @@ render: function () {
       return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
     }
 
+    var autoSelector = function (arr) { return arr[0] }
+
     this.$el.stager(this.members, this, {
       type: MyApp.Models.Assignment,
       modelType: MyApp.Models.User,
