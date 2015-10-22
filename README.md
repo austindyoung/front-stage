@@ -5,13 +5,13 @@ front-stage is a jQuery plugin and a Backbone.js Collections extension that solv
 
 For example, consider an email. When using a form to create an email, a user should be able to CC a collection of users. While doing so, it would be nice if teh following happened:
 
-(1) the user is prompted with a list of matches
+1. the user is prompted with a list of matches
 
-(2) the form autocompleted to a particular user
+2. the form autocompleted to a particular user
 
-(3) the form displayed the users that have been selected so far
+3. the form displayed the users that have been selected so far
 
-(4) the form allowed the user to remove selected users
+4. the form allowed the user to remove selected users
 
 Front-stage provides a framework that will automatically generate a dynamic form according to this general framework as well as deal with its submission. It's functionality can be overidden by the engineer.
 
@@ -53,17 +53,18 @@ render: function () {
     }
 
     this.$el.stager(this.organization.members(), this, {
-      show: true,
-      display: display,
-      identifier: identifier,
-      placeholder: "member",
-      filterCondition: filterCondition,
-      extra: extra,
       type: Manifold.Models.TeamMembership,
       collectionName: "team_members",
       modelType: Manifold.Models.User,
       primaryKey: "project_id",
-      foreignKey: "member_id"
+      foreignKey: "member_id",
+      display: display,
+      identifier: identifier,  
+      filterCondition: filterCondition,
+      autoSelector: autoSelector,
+      extra: extra,
+      placeholder: "member",
+      show: true
     });
 
     return this;
@@ -72,19 +73,20 @@ render: function () {
 
   ```
   this.$el.stager(collection, this, {
-    show: true,
-    unique: true,
-    display: display,
-    identifier: display,
-    placeholder: "project",
-    filterCondition: filterCondition,
-    comparator: 
-    extra: extra,
     type: Manifold.Models.WorkspaceProjectMembership,
     collectionName: "projects",
     modelType: Manifold.Models.User,
     primaryKey: "workspace_id",
-    foreignKey: "project_id"
+    foreignKey: "project_id",
+    display: display,
+    identifier: display,
+    placeholder: "project",
+    filterCondition: filterCondition,
+    autoSelector: autoSelector,
+    comparator: comparator
+    extra: extra,
+    show: true,
+    unique: true,
   });
   ```
 * [DB schema][schema]
