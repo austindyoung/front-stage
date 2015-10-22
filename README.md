@@ -20,6 +20,9 @@ If the searching involved in producing matching results for such forms were done
 
 ## Usage
 
+### Searchable.js
+...
+
 ### Creating input and staging area in a form
 
 A div with class "stage" will contain the input for the collection's elements (e.g. users) and a div with id "elements-stage" will display the selected elements.
@@ -216,8 +219,3 @@ render: function () {
     unique: true,
   });
   ```
-* [DB schema][schema]
-
-[schema]: ./docs/schema.md
-
-## Implementation Timeline
