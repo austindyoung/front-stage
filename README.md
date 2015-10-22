@@ -64,9 +64,11 @@ extra
 placeholder
 ```
 
-Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the settings properties below:
+Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the basic settings properties below:
 
+```
 type:
+```
 
 The class of the Backbone model that represents the relationship between the object being created with the form and the elements of the collection in the form, e.g.
 
