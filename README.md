@@ -38,10 +38,6 @@ A div with class "stage" will be where the input for the collections elements (e
 
 ![Form](/images/blank_user_form_with_background.png)
 
-![Form](/images/single_prefix_user_form_with_background.png)
-
-![Form](/images/single_stagee.png)
-
 ```
 render: function () {
     var renderedContent = this.template({
@@ -80,6 +76,12 @@ render: function () {
     return this;
   }
   ```
+
+![Form](/images/single_prefix_user_form_with_background.png)
+
+![Form](/images/single_stagee.png)
+
+
 
   ```
   this.$el.stager(collection, this, {
