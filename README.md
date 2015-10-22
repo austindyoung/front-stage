@@ -51,6 +51,19 @@ this.$el.stager(collection, view, setting)
 ```
 where settings is an object with the following basic properties:
 
+```
+type
+modelType
+primaryKey
+foreignKey
+display
+identifier
+filterCondition
+autoSelector
+extra
+placeholder
+```
+
 Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the settings properties below:
 
 type:
