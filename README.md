@@ -46,7 +46,7 @@ render: function () {
       return (model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname).replace(/  /, " ")
     }
 
-    var extra = {ownerId: MyApp.currentUser.id};
+    var extra = { ownerId: MyApp.currentUser.id };
 
     var identifier = function (model) {
       return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
@@ -58,7 +58,7 @@ render: function () {
       identifier: identifier,
       placeholder: "member",
       filterCondition: filterCondition,
-      extra: {},
+      extra: extra,
       type: Manifold.Models.TeamMembership,
       collectionName: "team_members",
       modelType: Manifold.Models.User,
@@ -68,6 +68,24 @@ render: function () {
 
     return this;
   }
+  ```
+
+  ```
+  this.$el.stager(collection, this, {
+    show: true,
+    unique: true,
+    display: display,
+    identifier: display,
+    placeholder: "project",
+    filterCondition: filterCondition,
+    comparator: 
+    extra: extra,
+    type: Manifold.Models.WorkspaceProjectMembership,
+    collectionName: "projects",
+    modelType: Manifold.Models.User,
+    primaryKey: "workspace_id",
+    foreignKey: "project_id"
+  });
   ```
 * [DB schema][schema]
 
