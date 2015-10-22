@@ -5,13 +5,13 @@ front-stage is a jQuery plugin and a Backbone.js Collections extension that solv
 
 For example, consider an email. When using a form to create an email, a user should be able to CC a collection of users. While doing so, it would be nice if the following happened:
 
-1. the user is prompted with a list of matches
+1. The user is prompted with a list of matches
 
-2. the form autocompletes to a particular user
+2. The form autocompletes to a particular user
 
-3. the form displays the users that have been selected so far
+3. The form displays the users that have been selected so far
 
-4. the form allows the user to remove selected users
+4. The form allows the user to remove selected users
 
 Front-stage provides a framework that will automatically generate a dynamic form according to this general pattern, as well as deal with its submission. It's functionality can be overidden by the engineer.
 
@@ -264,7 +264,7 @@ Example:
 
 comparator:
 
-Comparator for sorting of results list
+Comparator for sorting of results list.
 
 unique:
 
