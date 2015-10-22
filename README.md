@@ -246,6 +246,7 @@ The autocompleted input is staged by a down key press and a list result is stage
 
 ```
 show
+comparator
 unique
 collectionName
 submit
@@ -260,6 +261,10 @@ Example:
 ![Form](/images/stagees.png)
 
 ![Form](/images/shown.png)
+
+comparator:
+
+Comparator for sorting of results list
 
 unique:
 
