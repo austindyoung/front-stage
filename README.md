@@ -51,6 +51,8 @@ this.$el.stager(collection, view, setting)
 ```
 where settings is an object with the following basic properties:
 
+Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the settings properties below:
+
 type:
 
 The class of the Backbone model that represents the relationship between the object being created with the form and the elements of the collection in the form, e.g.
@@ -66,10 +68,6 @@ The class of the Backbone Model that is being created with the form, e.g.
 ```
 EmailApp.Models.Email
 ```
-
-collectionName:
-
-
 
 primaryKey:
 
@@ -87,11 +85,26 @@ The database key for the id of an element in the collection, e.g.
 cc_id
 ```
 
-collectionName:
+display:
 
-display
+What is displayed as the autocompleted input, e.g.
 
-identifier  
+```
+var display = function (model) {
+  return (model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname).replace(/  /, " ")
+}
+
+```
+
+identifier:  
+
+What is displayed in the results list to uniquely identify a result, e.g.
+
+```
+var identifier = function (model) {
+  return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
+}
+```
 
 filterCondition
 
@@ -101,7 +114,6 @@ extra
 
 placeholder
 
-show
 
 ```
 render: function () {
