@@ -31,6 +31,44 @@ Front-stage provides a framework that will automatically generate a dynamic form
   <input type="submit" value="+" class="btn btn-default task-main-form">
 </form>
 ```
+
+```
+render: function () {
+    var renderedContent = this.template({
+      project: this.model
+    });
+    this.$el.html(renderedContent);
+    var filterCondition =  function (model, regex) {
+      return model.attributes.fname.toLowerCase().match(regex) || model.attributes.mname.toLowerCase().match(regex) || model.attributes.lname.toLowerCase().match(regex);
+    }
+
+    var display = function (model) {
+      return (model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname).replace(/  /, " ")
+    }
+
+    var extra = {ownerId: MyApp.currentUser.id};
+
+    var identifier = function (model) {
+      return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
+    }
+
+    this.$el.stager(this.organization.members(), this, {
+      show: true,
+      display: display,
+      identifier: identifier,
+      placeholder: "member",
+      filterCondition: filterCondition,
+      extra: {},
+      type: Manifold.Models.TeamMembership,
+      collectionName: "team_members",
+      modelType: Manifold.Models.User,
+      primaryKey: "project_id",
+      foreignKey: "member_id"
+    });
+
+    return this;
+  }
+  ```
 * [DB schema][schema]
 
 [schema]: ./docs/schema.md
