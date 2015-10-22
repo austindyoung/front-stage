@@ -17,11 +17,13 @@ Front-stage provides a framework that will automatically generate a dynamic form
 
 ## Usage
 
+### Creating the staging area in a form
+
 A div with class "stage" will be where the input for the collections elements (e.g. users) will be and a div with id "elements-stage" will be where the selected elements will be displayed.
 
 ```
 <form>
-  <input name="title">
+  <input name="title" placeholder="New Task">
 
   <textarea placeholder="Description" ></textarea>
 
