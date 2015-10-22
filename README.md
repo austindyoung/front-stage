@@ -251,9 +251,11 @@ submit
 
 show:
 
-To make it so the current view immediately reflects the creation that will be done upon submission, a 'show' property can be added to the settings object with the value true
+To make it so the current view immediately reflects the creation that will be done upon submission, a 'show' property can be added to the settings object with the value 'true, assuming that there is a listener for an add event on the collection in question.
 
 Example:
+
+![Form](/images/stagees.png)
 
 ![Form](/images/shown.png)
 
