@@ -81,7 +81,7 @@ render: function () {
 
 ![Form](/images/single_stagee.png)
 
-![Form](/images/created.png)
+![Form](/images/stagees.png)
 
 ![Form](/images/shown.png)
 
