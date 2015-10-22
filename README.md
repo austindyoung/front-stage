@@ -33,7 +33,7 @@ A div with class "stage" will be where the input for the collections elements (e
   <input type="submit" value="+" class="btn btn-default task-main-form">
 </form>
 ```
-
+![Form](/images/blank_user_form.png)
 
 ```
 render: function () {
