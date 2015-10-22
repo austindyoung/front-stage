@@ -1,9 +1,9 @@
 
 ## front-stage
 
-front-stage is a jQuery plugin and a Backbone.js Collections extension that solves the problem of UI object creation involving a user-inputted collection.
+front-stage is a jQuery plugin and a Backbone.js Collections extension that solves the problem of UI object creation involving a user-inputted collection in Backbone.js projects.
 
-For example, consider an email. When using a form to create an email, a user should be able to CC a collection of users. While doing so, it would be nice if teh following happened:
+For example, consider an email. When using a form to create an email, a user should be able to CC a collection of users. While doing so, it would be nice if the following happened:
 
 1. the user is prompted with a list of matches
 
@@ -15,11 +15,14 @@ For example, consider an email. When using a form to create an email, a user sho
 
 Front-stage provides a framework that will automatically generate a dynamic form according to this general framework as well as deal with its submission. It's functionality can be overidden by the engineer.
 
+The searching involved in producing matching results is done on the front-end with a custom Backbone Collections extension to avoid multiple fetches per session from the database.
+
+
 ## Usage
 
 ### Creating the staging area in a form
 
-A div with class "stage" will be where the input for the collections elements (e.g. users) will be and a div with id "elements-stage" will be where the selected elements will be displayed.
+A div with class "stage" will contain the input for the collection's elements (e.g. users) and a div with id "elements-stage" will display the selected elements.
 
 ```
 <form>
@@ -100,6 +103,7 @@ render: function () {
     filterCondition: filterCondition,
     autoSelector: autoSelector,
     comparator: comparator
+    submit: submit
     extra: extra,
     show: true,
     unique: true,
