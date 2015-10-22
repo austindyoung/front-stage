@@ -67,13 +67,27 @@ The class of the Backbone Model that is being created with the form, e.g.
 EmailApp.Models.Email
 ```
 
-collectionName
+collectionName:
 
-primaryKey
 
-foreignKey
 
-collectionName
+primaryKey:
+
+The database key for the id of the object that is created with the form, e.g.
+
+```
+email_id
+```
+
+foreignKey:
+
+The database key for the id of an element in the collection, e.g.
+
+```
+cc_id
+```
+
+collectionName:
 
 display
 
