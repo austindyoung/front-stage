@@ -37,6 +37,8 @@ A div with class "stage" will be where the input for the collections elements (e
 ```
 ![Form](/images/test.png)
 
+![Form](/images/blank_user_form_with_background.png)
+
 ![Form](/images/single_prefix.png)
 
 ```
