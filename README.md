@@ -7,20 +7,20 @@ For example, consider an email. When using a form to create an email, a user sho
 
 1. the user is prompted with a list of matches
 
-2. the form autocompleted to a particular user
+2. the form autocompletes to a particular user
 
-3. the form displayed the users that have been selected so far
+3. the form displays the users that have been selected so far
 
-4. the form allowed the user to remove selected users
+4. the form allows the user to remove selected users
 
 Front-stage provides a framework that will automatically generate a dynamic form according to this general framework as well as deal with its submission. It's functionality can be overidden by the engineer.
 
-The searching involved in producing matching results is done on the front-end with a custom Backbone Collections extension to avoid multiple fetches per session from the database.
+If the searching involved in producing matching results for such forms were done on the back-end, there would be multiple fetched to the database per session. Since, front-stage uses a custom Backbone Collections for front-end-limited searching, front-stage avoids this problem.
 
 
 ## Usage
 
-### Creating the staging area in a form
+### Creating input and staging area in a form
 
 A div with class "stage" will contain the input for the collection's elements (e.g. users) and a div with id "elements-stage" will display the selected elements.
 
@@ -40,6 +40,54 @@ A div with class "stage" will contain the input for the collection's elements (e
 ```
 
 ![Form](/images/blank_user_form_with_background.png)
+
+### Defining form dynamics and submission
+
+To include a form in a page, the jQuery plugin 'stager' should be called on the Backbone view's $el in the view's render method. That is,
+
+```
+this.$el.stager(collection, view, setting)
+
+```
+where settings is an object with the following basic properties:
+
+type:
+
+The class of the Backbone model that represents the relationship between the object being created with the form and the elements of the collection in the form, e.g.
+
+```
+EmailApp.Models.CarbonCopy
+```
+
+modelType:
+
+The class of the Backbone Model that is being created with the form, e.g.
+
+```
+EmailApp.Models.Email
+```
+
+collectionName
+
+primaryKey
+
+foreignKey
+
+collectionName
+
+display
+
+identifier  
+
+filterCondition
+
+autoSelector
+
+extra
+
+placeholder
+
+show
 
 ```
 render: function () {
@@ -61,12 +109,12 @@ render: function () {
       return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
     }
 
-    this.$el.stager(this.organization.members(), this, {
+    this.$el.stager(this.members, this, {
       type: Manifold.Models.TeamMembership,
-      collectionName: "team_members",
       modelType: Manifold.Models.User,
       primaryKey: "project_id",
       foreignKey: "member_id",
+      collectionName: "team_members",
       display: display,
       identifier: identifier,  
       filterCondition: filterCondition,
