@@ -232,6 +232,8 @@ render: function () {
   }
   ```
 
+The autocompleted input is staged by a down key press and a list result is staged by clicking on it.
+
 ![Form](/images/single_prefix_user_form_with_background.png)
 
 ![Form](/images/single_stagee.png)
@@ -240,27 +242,25 @@ render: function () {
 
 ### Additional settings
 
+```
+show
+unique
+collectionName
+submit
+```
+
+show:
+
+To make it so the current view immediately reflects the creation that will be done upon submission, a 'show' property can be added to the settings object with the value true
+
+Example:
+
 ![Form](/images/shown.png)
 
+unique:
 
+It may be the case the the displayed input uniquely individuates the model. In this case adding the property 'unique' and assigning it to 'true' will make it so the autocompleted input is not also displayed in the results list.
 
+submit:
 
-  ```
-  this.$el.stager(collection, this, {
-    type: Manifold.Models.WorkspaceProjectMembership,
-    collectionName: "projects",
-    modelType: Manifold.Models.User,
-    primaryKey: "workspace_id",
-    foreignKey: "project_id",
-    display: display,
-    identifier: display,
-    placeholder: "project",
-    filterCondition: filterCondition,
-    autoSelector: autoSelector,
-    comparator: comparator
-    submit: submit
-    extra: extra,
-    show: true,
-    unique: true,
-  });
-  ```
+To override the default submit method, a submit property can be added and assigned to whatever function the engineer would like to be evaluated for each element of the collection
