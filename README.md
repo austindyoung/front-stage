@@ -37,6 +37,8 @@ A div with class "stage" will be where the input for the collections elements (e
 ```
 ![Form](/images/test.png)
 
+![Form](/images/single_prefix.png)
+
 ```
 render: function () {
     var renderedContent = this.template({
