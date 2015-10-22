@@ -66,9 +66,9 @@ placeholder
 
 Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the basic settings properties below:
 
-```
+
 type:
-```
+
 
 The class of the Backbone model that represents the relationship between the object being created with the form and the elements of the collection in the form, e.g.
 
@@ -117,17 +117,35 @@ What is displayed in the results list to uniquely identify a result, e.g.
 
 ```
 var identifier = function (model) {
-  return model.attributes.fname + " " + model.attributes.mname + " " + model.attributes.lname + " " + model.attributes.email;
+  return display(model) + " " + model.attributes.email;
 }
 ```
 
-filterCondition
+filterCondition:
 
-autoSelector
+The regex-based matching condition for the results list, e.g.
 
-extra
+```
+var filterCondition =  function (model, regex) {
+  return model.attributes.fname.toLowerCase().match(regex) || model.attributes.mname.toLowerCase().match(regex) || model.attributes.lname.toLowerCase().match(regex);
+}
+```
 
-placeholder
+autoSelector:
+
+The method which selects the result from a prefix-matched search that is used as the autocompleted input. The first element of the results list will be the autocompleted input.
+
+extra:
+
+An object with properties of the object being created with the form, but that are not included in the form, e.g
+
+```
+var extra = { ownerId: MyApp.currentUser.id };
+```
+
+placeholder:
+
+Placeholder for the input
 
 
 ```
