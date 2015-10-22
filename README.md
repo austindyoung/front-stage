@@ -21,7 +21,44 @@ If the searching involved in producing matching results for such forms were done
 ## Usage
 
 ### Searchable.js
-...
+
+In order for a Backbone collection to compatable with the plugin, it must be extended from Searchable. E.g,
+
+```
+Manifold.Collections.Users = Backbone.Searchable.extend({
+  ...
+})
+```
+Among others, it will include the following methods:
+
+```
+filter: function (prefix, condition) {
+  var condition = condition;
+  prefix = prefix.toLowerCase();
+  var regex = "^" + prefix
+  if (prefix === "") {
+    return [];
+  } else if (!this.filterCondition) {
+    return this.select(function (model) {
+      return condition(model, regex);
+    }.bind(this))
+  } else {
+    return this.select(function (model) {
+      return this.filterCondition(model, regex);
+    }.bind(this))
+  }
+}
+
+select: function (condition) {
+  var selected = [];
+  this.models.forEach(function (model) {
+    if (condition(model)) {
+      selected.push(model);
+    }
+  });
+  return selected;
+}
+```
 
 ### Creating input and staging area in a form
 
@@ -130,7 +167,11 @@ The regex-based matching condition for the results list, e.g.
 
 ```
 var filterCondition =  function (model, regex) {
-  return model.attributes.fname.toLowerCase().match(regex) || model.attributes.mname.toLowerCase().match(regex) || model.attributes.lname.toLowerCase().match(regex);
+  return model.attributes.fname.toLowerCase().match(regex) ||
+
+  model.attributes.mname.toLowerCase().match(regex) ||
+
+  model.attributes.lname.toLowerCase().match(regex);
 }
 ```
 
