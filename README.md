@@ -47,7 +47,8 @@ filter: function (prefix, condition) {
       return this.filterCondition(model, regex);
     }.bind(this))
   }
-}
+},
+...
 
 select: function (condition) {
   var selected = [];
@@ -104,7 +105,7 @@ extra
 placeholder
 ```
 
-Consider the situation of using a form to create an email with a list of cc's as the collection in question. We elaborate on the basic settings properties below:
+Consider the situation of using a form to create a task with a list of assignees as the collection in question. We elaborate on the basic settings properties below:
 
 
 type:
@@ -113,7 +114,7 @@ type:
 The class of the Backbone model that represents the relationship between the object being created with the form and the elements of the collection in the form, e.g.
 
 ```
-EmailApp.Models.CarbonCopy
+MyApp.Models.Assignment
 ```
 
 modelType:
@@ -121,7 +122,7 @@ modelType:
 The class of the Backbone Model that is being created with the form, e.g.
 
 ```
-EmailApp.Models.Email
+MyApp.Models.Task
 ```
 
 primaryKey:
@@ -129,7 +130,7 @@ primaryKey:
 The database key for the id of the object that is created with the form, e.g.
 
 ```
-email_id
+task_id
 ```
 
 foreignKey:
@@ -137,7 +138,7 @@ foreignKey:
 The database key for the id of an element in the collection, e.g.
 
 ```
-cc_id
+assignee_id
 ```
 
 display:
@@ -192,6 +193,8 @@ placeholder:
 Placeholder for the input
 
 
+All-in-all:
+
 ```
 render: function () {
     var renderedContent = this.template({
@@ -213,18 +216,16 @@ render: function () {
     }
 
     this.$el.stager(this.members, this, {
-      type: Manifold.Models.TeamMembership,
-      modelType: Manifold.Models.User,
-      primaryKey: "project_id",
-      foreignKey: "member_id",
-      collectionName: "team_members",
+      type: MyApp.Models.Assignment,
+      modelType: MyApp.Models.User,
+      primaryKey: "task_id",
+      foreignKey: "assignee_id",
       display: display,
       identifier: identifier,  
       filterCondition: filterCondition,
       autoSelector: autoSelector,
       extra: extra,
-      placeholder: "member",
-      show: true
+      placeholder: "assignee",
     });
 
     return this;
@@ -237,7 +238,10 @@ render: function () {
 
 ![Form](/images/stagees.png)
 
+### Additional settings
+
 ![Form](/images/shown.png)
+
 
 
 
