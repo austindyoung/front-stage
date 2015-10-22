@@ -40,6 +40,7 @@ A div with class "stage" will be where the input for the collections elements (e
 
 ![Form](/images/single_prefix_user_form_with_background.png)
 
+![Form](/images/single_stagee.png)
 
 ```
 render: function () {
