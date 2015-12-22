@@ -33,12 +33,10 @@
       }.bind(this));
 
       this.on('keyup', function (event) {
-        // event.preventDefault();
         var code = event.keyCode || event.which
         if ($(document.activeElement).attr("class") === "form-control element" && code == 40) {
           this.stage(view, settings.display, settings.identifier);
         } else if ($(document.activeElement).attr("class") === "form-control element") {
-          // event.preventDefault();
           var completed = this.adder(event, view, collection, settings.filterCondition, settings.display);
 
           this.find('.list').empty();
@@ -58,7 +56,6 @@
           if (settings.comparator) {
             resultsArry.sort(comparator);
           }
-          //sort
 
           if (resultsArray.length === 0) {
             this.find('#results').remove();
@@ -68,7 +65,6 @@
               if (settings.display(el) !== settings.display(completed)) {
                 var $result = $('<li></li>');
                 $result.addClass('list-group-item')
-                // $result.text(collection.display(el));
                 $result.text(settings.identifier(el));
                 $result.data(el);
                 $list.append($result);
@@ -79,8 +75,7 @@
             })
             currents.forEach(function (el) {
               var $result = $('<li></li>');
-              $result.addClass('list-group-item')
-              // $result.text(collection.display(el));
+              $result.addClass('list-group-item');
               $result.text(settings.identifier(el));
               $result.data(el);
               $list.prepend($result);
@@ -88,7 +83,6 @@
 
             var $result = $('<li></li>');
             $result.addClass('list-group-item')
-            // $result.text(collection.display(el));
             if (!settings.unique) {
               $result.text(settings.identifier(completed));
               $result.data(completed);
@@ -181,13 +175,10 @@
       event.preventDefault();
       var $input = this.find('input.element');
       var attrs = this.find('form').serializeJSON();
-
-      // var assignee_ids = JSON.parse(attrs.assignee_ids);
       var collection = $input.data('collection');
 
       var numElements = collection.length;
       var count = 0;
-      // delete attrs.assignee_ids;
       view.attrs = attrs
       view.attrs[collectionName] = [];
       view.attrs = attrs
@@ -197,7 +188,6 @@
         }
       }
       view.attrs['collectionName'] = [];
-        // view.attrs['collectionName'] = assignee_ids;
       var success = function (model) {
         view.attrs.id = model.id;
         for (var i = 0; i < collection.length; i++) {
@@ -207,7 +197,6 @@
 
             submit(el);
           } else if (show) {
-            // var el = assignee_id;
             var foreign = el.id;
             if (el) {
               var primary = view.model.id;
@@ -231,7 +220,6 @@
 
             view.render();
           } else {
-            // var el = assignee_id;
             var foreign = el.id;
               var primary = view.model.id;
               var keys = {};
